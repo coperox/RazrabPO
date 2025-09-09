@@ -1,12 +1,42 @@
-# React + Vite
+# H2O - Автомойка (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
+Веб-приложение разработчиков ПО:
+- Просмотра продуктов
+- Оставления и просмотра отзывов
+- Просмотра контактной информации
 
-Currently, two official plugins are available:
+## Технологии
+- React 18
+- Vite 4
+- React Router 6
+- JSON Server (для эмуляции API)
+- Figma (дизайн)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Установка и запуск
 
-## Expanding the ESLint configuration
+### 1. Клонирование репозитория
+```bash
+git clone https://github.com/coperox/RazrabPO
+cd up
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Установка зависимостей
+```bash
+npm install
+```
+
+### 3. Запуск сервера разработки
+``` bash
+npm run dev
+```
+
+### 4. Запуск фейкового API сервера (в отдельном терминале)
+``` bash
+npm run server
+```
+
+## Ссылки
+[Figma макет](https://www.figma.com/design/4oiIoKAZEWuMIJgYvWU7AJ/Задание-«Найди-ошибки-в-сценарии»--Copy-?node-id=0-1&p=f&t=lvdH2pza5cZLxRUD-0)
+
+[GitHub репозиторий](https://github.com/coperox/RazrabPO)

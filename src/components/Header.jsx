@@ -20,11 +20,11 @@ function Header() {
         
         <nav className={`nav ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul>
-            <li><Link to="/">Главная</Link></li>
-            <li><Link to="/services">Продукция</Link></li>
-            <li><Link to="/events">Поддержка</Link></li>
+            <li><Link to="/home">Главная</Link></li>
+            <li><Link to="/Product">Продукция</Link></li>
+            <li><Link to="/support">Поддержка</Link></li>
             <li><Link to="/about">О компании</Link></li>
-            <li><Link to="/contact">Личный кабинет</Link></li>
+            <li><Link to="/Lk">Личный кабинет</Link></li>
           </ul>
         </nav>
       </div>

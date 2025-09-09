@@ -1,95 +1,78 @@
-import ServiceCard from '../components/ServiceCard'
-import '../styles/pages/Product.css'
+import { useState } from 'react';
+import ServiceCard from '../components/ProductCard';
+import CartForm from '../components/CartForm';
+import { useCart } from '../contexts/CartContext'; // Новый импорт
+import '../styles/pages/Product.css';
 
-function Services() {
+function Product() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart(); // Используем контекст
+
   const services = [
     {
       id: 1,
-      title: 'Игровые ПК',
-      description: 'Мощные компьютеры с топовыми видеокартами и процессорами',
-      price: '500 руб/час',
-      image: '/images/pc-zone.jpg'
+      title: 'Adobe Photoshop (подписка на 1 год)',
+      description: 'все, что можно себе представить, вы можете создать в Photoshop...',
+      image: '/images/photoshop.jpg',
+      price: '31 990 ₽'
     },
     {
       id: 2,
-      title: 'VR-зона',
-      description: 'Полное погружение в виртуальную реальность',
-      price: '800 руб/час',
-      image: '/images/vr-zone.jpg'
+      title: 'Microsoft 365 Профессионал плюс (на 1 год)',
+      description: 'Microsoft 365 – это универсальное программное решение...',
+      image: '/images/office.jpg',
+      price: '1 790 ₽'
     },
     {
       id: 3,
-      title: 'Турниры',
-      description: 'Участие в киберспортивных соревнованиях',
-      price: 'Бесплатно (с абонементом)',
-      image: '/images/tournament.jpg'
+      title: 'Microsoft Windows 10 Home',
+      description: 'Microsoft Windows 10 Домашняя (Home) — это бессрочная операционная система...',
+      image: '/images/win.jpg',
+      price: '1 997 ₽'
     }
-  ]
+  ];
 
-  const subscriptions = [
-    { name: 'Стандарт', price: '5000 руб', hours: 15, discount: '10%' },
-    { name: 'Продвинутый', price: '8000 руб', hours: 30, discount: '15%' },
-    { name: 'Профессионал', price: '12000 руб', hours: 50, discount: '20%' }
-  ]
+  const handleAddToCart = (product) => {
+    console.log('Выбран товар для добавления:', product);
+    setSelectedProduct(product);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+  };
+
+  const handleCartItemAdded = (newItem) => {
+    console.log('Добавление через форму:', newItem);
+    addToCart(newItem);
+  };
 
   return (
     <div className="services-page">
-      <section className="services-hero">
-        <div className="container">
-          <h1>Наши услуги</h1>
-          <p>Выберите то, что подходит именно вам</p>
-        </div>
-      </section>
-
       <section className="services-list">
         <div className="container">
-          <h2>Основные услуги</h2>
+          <div><img src="images/Product.jpg" alt="Продукты" /></div>
+          <h2>Наши продукты</h2>
           <div className="services-grid">
             {services.map(service => (
-              <ServiceCard key={service.id} service={service} />
+              <ServiceCard 
+                key={service.id} 
+                service={service} 
+                onAddToCart={handleAddToCart}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="pricing-section">
-        <div className="container">
-          <h2>Тарифы и абонементы</h2>
-          <div className="pricing-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Название</th>
-                  <th>Цена</th>
-                  <th>Часы</th>
-                  <th>Скидка</th>
-                </tr>
-              </thead>
-              <tbody>
-                {subscriptions.map((sub, index) => (
-                  <tr key={index}>
-                    <td>{sub.name}</td>
-                    <td>{sub.price}</td>
-                    <td>{sub.hours}</td>
-                    <td>{sub.discount}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="gallery-section">
-        <div className="container">
-          <h2>Наше оборудование</h2>
-          <div className="gallery-grid">
-            <img src="/images/equipment1.jpg" />
-          </div>
-        </div>
-      </section>
+      {selectedProduct && (
+        <CartForm 
+          product={selectedProduct} 
+          onClose={handleCloseModal}
+          onAddToCart={handleCartItemAdded}
+        />
+      )}
     </div>
-  )
+  );
 }
 
-export default Services
+export default Product;
